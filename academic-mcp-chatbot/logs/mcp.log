@@ -1,0 +1,37 @@
+
+[17:33:11] MCP REQUEST
+Server: filesystem
+Tool: list_allowed_directories
+
+Arguments:
+{}
+
+
+[17:33:11] MCP RESPONSE
+Server: filesystem
+Tool: list_allowed_directories
+Status: success
+
+Result:
+Allowed directories:
+/Users/Camila/mcp-sandbox
+
+
+[17:33:12] MCP REQUEST
+Server: filesystem
+Tool: read_text_file
+
+Arguments:
+{
+    "path": "/Users/Camila/mcp-sandbox/nota.txt"
+}
+
+
+[17:33:12] MCP RESPONSE
+Server: filesystem
+Tool: read_text_file
+Status: success
+
+Result:
+hola mundo
+

@@ -20,7 +20,6 @@ async def run_conversation_turn(llm, mcp_manager, conversation_history):
         tool_results = []
         for block in response.content:
             if block.type == "tool_use":
-                print(f"\n[MCP] Usando herramienta: {block.name} | args={block.input}")
                 result = await mcp_manager.call_tool(block.name, block.input)
                 result_text = "".join(
                     c.text for c in result.content if hasattr(c, "text")

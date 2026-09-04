@@ -1,6 +1,7 @@
 from contextlib import AsyncExitStack
 from mcp import ClientSession, StdioServerParameters
 from mcp.client.stdio import stdio_client
+from chatbot.logger import McpLogger
 
 
 class McpClientManager:
@@ -11,6 +12,7 @@ class McpClientManager:
         self.tool_to_server: dict[str, str] = {}
         self.available_tools: list[dict] = []  #formato esperado por la API de Claude
         self._exit_stack = AsyncExitStack()
+        self.logger = McpLogger() 
 
     async def connect_to_server(self, name: str, command: str, args: list[str]):
         server_params = StdioServerParameters(command=command, args=args)
@@ -36,7 +38,19 @@ class McpClientManager:
     async def call_tool(self, tool_name: str, arguments: dict):
         server_name = self.tool_to_server[tool_name]
         session = self.sessions[server_name]
-        return await session.call_tool(tool_name, arguments)
+
+        self.logger.log_request(server_name, tool_name, arguments)
+
+        try:
+            result = await session.call_tool(tool_name, arguments)
+            result_text = "".join(
+                c.text for c in result.content if hasattr(c, "text")
+            )
+            self.logger.log_response(server_name, tool_name, "success", result_text)
+            return result
+        except Exception as e:
+            self.logger.log_response(server_name, tool_name, "error", str(e))
+            raise
 
     async def close(self):
         await self._exit_stack.aclose()
