@@ -7,6 +7,7 @@ def main():
     print("=" * 40)
 
     llm = LLMClient()
+    conversation_history = []  #guarda historial 
 
     while True:
         user_input = input("\nYou > ").strip()
@@ -18,13 +19,20 @@ def main():
         if not user_input:
             continue
 
-        messages = [{"role": "user", "content": user_input}]
+        # Agregamos el mensaje del usuario al historial
+        conversation_history.append({"role": "user", "content": user_input})
 
         try:
-            reply = llm.send_message(messages)
+            reply = llm.send_message(conversation_history)
             print(f"\nAssistant > {reply}")
+
+            # Agregamos la respuesta del modelo al historial también
+            conversation_history.append({"role": "assistant", "content": reply})
+
         except Exception as e:
             print(f"\n[Error al contactar al LLM]: {e}")
+            # Si falló, no dejamos el mensaje del usuario "colgado" en el historial
+            conversation_history.pop()
 
 
 if __name__ == "__main__":
