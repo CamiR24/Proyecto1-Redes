@@ -29,10 +29,11 @@ class McpClientManager:
         response = await session.list_tools()
         for tool in response.tools:
             self.tool_to_server[tool.name] = name
+            schema = getattr(tool, "input_schema", None) or getattr(tool, "inputSchema", None)
             self.available_tools.append({
                 "name": tool.name,
                 "description": tool.description,
-                "input_schema": tool.input_schema,
+                "input_schema": schema,
             })
 
     async def call_tool(self, tool_name: str, arguments: dict):

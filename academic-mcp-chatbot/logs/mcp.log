@@ -35,3 +35,247 @@ Status: success
 Result:
 hola mundo
 
+
+[17:38:26] MCP REQUEST
+Server: filesystem
+Tool: list_allowed_directories
+
+Arguments:
+{}
+
+
+[17:38:26] MCP RESPONSE
+Server: filesystem
+Tool: list_allowed_directories
+Status: success
+
+Result:
+Allowed directories:
+/Users/Camila/mcp-sandbox
+
+
+[17:38:26] MCP REQUEST
+Server: filesystem
+Tool: get_file_info
+
+Arguments:
+{
+    "path": "/Users/Camila/mcp-sandbox"
+}
+
+
+[17:38:26] MCP RESPONSE
+Server: filesystem
+Tool: get_file_info
+Status: success
+
+Result:
+size: 96
+created: Fri Sep 04 2026 16:49:21 GMT-0600 (Central Standard Time)
+modified: Fri Sep 04 2026 17:09:30 GMT-0600 (Central Standard Time)
+accessed: Fri Sep 04 2026 16:49:21 GMT-0600 (Central Standard Time)
+isDirectory: true
+isFile: false
+permissions: 755
+
+
+[17:38:28] MCP REQUEST
+Server: git
+Tool: git_status
+
+Arguments:
+{
+    "repo_path": "/Users/Camila/mcp-sandbox"
+}
+
+
+[17:38:28] MCP RESPONSE
+Server: git
+Tool: git_status
+Status: success
+
+Result:
+/Users/Camila/mcp-sandbox
+
+
+[17:38:32] MCP REQUEST
+Server: filesystem
+Tool: list_directory
+
+Arguments:
+{
+    "path": "/Users/Camila/mcp-sandbox"
+}
+
+
+[17:38:32] MCP RESPONSE
+Server: filesystem
+Tool: list_directory
+Status: success
+
+Result:
+[FILE] nota.txt
+
+
+[17:38:39] MCP REQUEST
+Server: filesystem
+Tool: write_file
+
+Arguments:
+{
+    "path": "/Users/Camila/mcp-sandbox/README.md",
+    "content": "Este es un repositorio de prueba\n"
+}
+
+
+[17:38:39] MCP RESPONSE
+Server: filesystem
+Tool: write_file
+Status: success
+
+Result:
+Successfully wrote to /Users/Camila/mcp-sandbox/README.md
+
+
+[17:38:40] MCP REQUEST
+Server: git
+Tool: git_add
+
+Arguments:
+{
+    "repo_path": "/Users/Camila/mcp-sandbox",
+    "files": [
+        "README.md"
+    ]
+}
+
+
+[17:38:40] MCP RESPONSE
+Server: git
+Tool: git_add
+Status: success
+
+Result:
+/Users/Camila/mcp-sandbox
+
+
+[17:38:41] MCP REQUEST
+Server: git
+Tool: git_status
+
+Arguments:
+{
+    "repo_path": "/Users/Camila/mcp-sandbox"
+}
+
+
+[17:38:41] MCP RESPONSE
+Server: git
+Tool: git_status
+Status: success
+
+Result:
+/Users/Camila/mcp-sandbox
+
+
+[17:38:47] MCP REQUEST
+Server: git
+Tool: git_commit
+
+Arguments:
+{
+    "repo_path": "/Users/Camila/mcp-sandbox",
+    "message": "Commit inicial: agrega README.md"
+}
+
+
+[17:38:47] MCP RESPONSE
+Server: git
+Tool: git_commit
+Status: success
+
+Result:
+/Users/Camila/mcp-sandbox
+
+
+[17:38:49] MCP REQUEST
+Server: git
+Tool: git_log
+
+Arguments:
+{
+    "repo_path": "/Users/Camila/mcp-sandbox",
+    "max_count": 5
+}
+
+
+[17:38:49] MCP RESPONSE
+Server: git
+Tool: git_log
+Status: success
+
+Result:
+/Users/Camila/mcp-sandbox
+
+
+[17:38:52] MCP REQUEST
+Server: git
+Tool: git_show
+
+Arguments:
+{
+    "repo_path": "/Users/Camila/mcp-sandbox",
+    "revision": "HEAD"
+}
+
+
+[17:38:52] MCP RESPONSE
+Server: git
+Tool: git_show
+Status: success
+
+Result:
+/Users/Camila/mcp-sandbox
+
+
+[12:29:33] MCP REQUEST
+Server: git
+Tool: git_add
+
+Arguments:
+{
+    "repo_path": "/Users/Camila/mcp-sandbox",
+    "files": [
+        "README.md"
+    ]
+}
+
+
+[12:29:33] MCP RESPONSE
+Server: git
+Tool: git_add
+Status: success
+
+Result:
+Files staged successfully
+
+
+[12:29:34] MCP REQUEST
+Server: git
+Tool: git_commit
+
+Arguments:
+{
+    "repo_path": "/Users/Camila/mcp-sandbox",
+    "message": "test"
+}
+
+
+[12:29:34] MCP RESPONSE
+Server: git
+Tool: git_commit
+Status: success
+
+Result:
+Changes committed successfully with hash e2f6699ac04e0a594663506eff072395e37270d2
+

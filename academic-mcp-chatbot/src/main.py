@@ -47,6 +47,11 @@ async def main():
         command="npx",
         args=["-y", "@modelcontextprotocol/server-filesystem", "/Users/Camila/mcp-sandbox"],
     )
+    await mcp_manager.connect_to_server(
+        name="git",
+        command="python",
+        args=["-m", "mcp_server_git"],
+    )
     print(f"\n[MCP] Tools disponibles: {[t['name'] for t in mcp_manager.available_tools]}")
 
     conversation_history = []
