@@ -14,8 +14,8 @@ class McpClientManager:
         self._exit_stack = AsyncExitStack()
         self.logger = McpLogger() 
 
-    async def connect_to_server(self, name: str, command: str, args: list[str]):
-        server_params = StdioServerParameters(command=command, args=args)
+    async def connect_to_server(self, name: str, command: str, args: list[str], cwd: str | None = None):
+        server_params = StdioServerParameters(command=command, args=args, cwd=cwd)
 
         stdio, write = await self._exit_stack.enter_async_context(
             stdio_client(server_params)

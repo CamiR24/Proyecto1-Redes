@@ -52,6 +52,12 @@ async def main():
         command="python",
         args=["-m", "mcp_server_git"],
     )
+    await mcp_manager.connect_to_server(
+        name="academic_planner",
+        command="python",
+        args=["-m", "src.server"],
+        cwd="/Users/Camila/Desktop/CAMILA UNIVERSIDAD/8SEMESTRE/Redes/academic-planner-mcp",
+    )
     print(f"\n[MCP] Tools disponibles: {[t['name'] for t in mcp_manager.available_tools]}")
 
     conversation_history = []

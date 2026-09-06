@@ -1,6 +1,7 @@
 import os
 from anthropic import Anthropic
 from dotenv import load_dotenv
+from datetime import date
 
 load_dotenv()
 
@@ -22,4 +23,17 @@ class LLMClient:
         if tools:
             kwargs["tools"] = tools
 
+        return self.client.messages.create(**kwargs)
+
+    def send_message(self, messages: list[dict], tools: list[dict] | None = None):
+        kwargs = dict(
+            model=self.model,
+            max_tokens=self.max_tokens,
+            system=f"La fecha de hoy es {date.today().isoformat()}. "
+                f"Úsala como referencia para interpretar fechas relativas o incompletas "
+                f"que mencione el usuario (ej. asumir el año actual si no lo especifica).",
+            messages=messages,
+        )
+        if tools:
+            kwargs["tools"] = tools
         return self.client.messages.create(**kwargs)

@@ -279,3 +279,87 @@ Status: success
 Result:
 Changes committed successfully with hash e2f6699ac04e0a594663506eff072395e37270d2
 
+
+[10:36:33] MCP REQUEST
+Server: academic_planner
+Tool: add_academic_task
+
+Arguments:
+{
+    "name": "Examen de Redes",
+    "course": "CC3067",
+    "type": "examen",
+    "deadline": "2025-09-10",
+    "estimated_hours": 4,
+    "difficulty": "alta",
+    "importance": "alta"
+}
+
+
+[10:36:33] MCP RESPONSE
+Server: academic_planner
+Tool: add_academic_task
+Status: success
+
+Result:
+Tarea creada con id=e5a56835-6919-4654-8c7e-95cd006121da
+
+
+[10:36:45] MCP REQUEST
+Server: academic_planner
+Tool: get_upcoming_tasks
+
+Arguments:
+{}
+
+
+[10:36:45] MCP RESPONSE
+Server: academic_planner
+Tool: get_upcoming_tasks
+Status: success
+
+Result:
+- Examen de Redes (CC3067) | deadline=2025-09-10 | priority=379.0
+
+
+[10:39:41] MCP REQUEST
+Server: academic_planner
+Tool: add_academic_task
+
+Arguments:
+{
+    "name": "Examen de Redes",
+    "course": "CC3067",
+    "type": "examen",
+    "deadline": "2026-09-10",
+    "estimated_hours": 4,
+    "difficulty": "alta",
+    "importance": "alta"
+}
+
+
+[10:39:41] MCP RESPONSE
+Server: academic_planner
+Tool: add_academic_task
+Status: success
+
+Result:
+Tarea creada con id=ad08c621-ceb2-4abe-bd41-aab7bbee5bf7
+
+
+[10:39:47] MCP REQUEST
+Server: academic_planner
+Tool: get_upcoming_tasks
+
+Arguments:
+{}
+
+
+[10:39:47] MCP RESPONSE
+Server: academic_planner
+Tool: get_upcoming_tasks
+Status: success
+
+Result:
+- Examen de Redes (CC3067) | deadline=2026-09-10 | priority=14.0
+
