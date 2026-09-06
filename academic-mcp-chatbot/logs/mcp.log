@@ -705,3 +705,51 @@ Result:
 2026-09-09: Examen de Redes (1h) [total 1h]
 2026-09-10: sin tareas asignadas
 
+
+[12:02:08] MCP REQUEST
+Server: academic_planner
+Tool: recommend_study_technique
+
+Arguments:
+{
+    "content_type": "memorización",
+    "time_available_hours": 2
+}
+
+
+[12:02:08] MCP RESPONSE
+Server: academic_planner
+Tool: recommend_study_technique
+Status: success
+
+Result:
+technique: Repetición espaciada + Active Recall
+justification: Para contenido memorístico (fechas, fórmulas, vocabulario, definiciones), recordar activamente la información en intervalos crecientes de tiempo fortalece la retención mucho más que releer pasivamente.
+how_to_apply: Crea flashcards con la pregunta de un lado y la respuesta del otro. Revísalas hoy, luego en 1 día, luego en 3 días, luego en 7 días. Antes de ver la respuesta, intenta recordarla desde cero.
+time_management_tip: Con este tiempo disponible, puedes dividir la sesión en bloques de 25-30 min con descansos breves (técnica Pomodoro).
+
+
+[12:02:23] MCP REQUEST
+Server: academic_planner
+Tool: decompose_project
+
+Arguments:
+{
+    "description": "Proyecto de Compiladores",
+    "deadline": "2026-09-30",
+    "estimated_total_hours": 20
+}
+
+
+[12:02:23] MCP RESPONSE
+Server: academic_planner
+Tool: decompose_project
+Status: success
+
+Result:
+Proyecto: Proyecto de Compiladores (deadline final: 2026-09-30)
+  - Investigación y planificación: Proyecto de Compiladores: 4.0h, sugerido antes de 2026-09-11
+  - Desarrollo / implementación: Proyecto de Compiladores: 10.0h, sugerido antes de 2026-09-23
+  - Pruebas y revisión: Proyecto de Compiladores: 4.0h, sugerido antes de 2026-09-28
+  - Entrega final y documentación: Proyecto de Compiladores: 2.0h, sugerido antes de 2026-09-30
+
