@@ -363,3 +363,194 @@ Status: success
 Result:
 - Examen de Redes (CC3067) | deadline=2026-09-10 | priority=14.0
 
+
+[11:42:16] MCP REQUEST
+Server: academic_planner
+Tool: add_academic_task
+
+Arguments:
+{
+    "name": "Examen de Redes",
+    "course": "CC3067",
+    "type": "examen",
+    "deadline": "2026-09-10",
+    "estimated_hours": 4,
+    "difficulty": "alta",
+    "importance": "alta"
+}
+
+
+[11:42:16] MCP RESPONSE
+Server: academic_planner
+Tool: add_academic_task
+Status: success
+
+Result:
+Tarea creada con id=835c3894-b7f7-4e00-b3b9-e39bd3c00c8a
+
+
+[11:42:25] MCP REQUEST
+Server: academic_planner
+Tool: add_academic_task
+
+Arguments:
+{
+    "name": "Tarea de Compiladores",
+    "course": "CC3032",
+    "type": "tarea",
+    "deadline": "2026-09-08",
+    "estimated_hours": 3,
+    "difficulty": "media",
+    "importance": "media"
+}
+
+
+[11:42:25] MCP RESPONSE
+Server: academic_planner
+Tool: add_academic_task
+Status: success
+
+Result:
+Tarea creada con id=05f84777-cf99-434d-9870-a40332e22d8a
+
+
+[11:42:36] MCP REQUEST
+Server: academic_planner
+Tool: analyze_workload
+
+Arguments:
+{
+    "days_ahead": 5,
+    "available_hours_per_day": 2
+}
+
+
+[11:42:36] MCP RESPONSE
+Server: academic_planner
+Tool: analyze_workload
+Status: success
+
+Result:
+Tareas en los próximos 5 días: 2
+Horas estimadas necesarias: 7
+Horas disponibles en el período: 10
+Estado: Carga manejable
+
+
+[11:43:58] MCP REQUEST
+Server: academic_planner
+Tool: add_academic_task
+
+Arguments:
+{
+    "name": "Examen de Redes",
+    "course": "CC3067",
+    "type": "examen",
+    "deadline": "2026-09-10",
+    "estimated_hours": 4,
+    "difficulty": "alta",
+    "importance": "alta"
+}
+
+
+[11:43:58] MCP RESPONSE
+Server: academic_planner
+Tool: add_academic_task
+Status: success
+
+Result:
+Tarea creada con id=9ddbea5f-8a7a-4090-9a63-087d266ebbd7
+
+
+[11:44:06] MCP REQUEST
+Server: academic_planner
+Tool: add_academic_task
+
+Arguments:
+{
+    "name": "Tarea de Compiladores",
+    "course": "CC3032",
+    "type": "tarea",
+    "deadline": "2026-09-08",
+    "estimated_hours": 3,
+    "difficulty": "media",
+    "importance": "media"
+}
+
+
+[11:44:06] MCP RESPONSE
+Server: academic_planner
+Tool: add_academic_task
+Status: success
+
+Result:
+Tarea creada con id=e126e4f9-8a12-4109-9f82-33fb4801086d
+
+
+[11:44:15] MCP REQUEST
+Server: academic_planner
+Tool: analyze_workload
+
+Arguments:
+{
+    "days_ahead": 5,
+    "available_hours_per_day": 2
+}
+
+
+[11:44:15] MCP RESPONSE
+Server: academic_planner
+Tool: analyze_workload
+Status: success
+
+Result:
+Tareas en los próximos 5 días: 2
+Horas estimadas necesarias: 7
+Horas disponibles en el período: 10
+Estado: Carga manejable
+
+
+[11:45:30] MCP REQUEST
+Server: academic_planner
+Tool: calculate_task_priority
+
+Arguments:
+{
+    "task_id": "e126e4f9-8a12-4109-9f82-33fb4801086d"
+}
+
+
+[11:45:30] MCP RESPONSE
+Server: academic_planner
+Tool: calculate_task_priority
+Status: success
+
+Result:
+Prioridad de 'Tarea de Compiladores':
+  days_remaining: 2
+  urgency: 8
+  difficulty_weight: 2
+  importance_weight: 2
+  workload_weight: 1.5
+  priority_score: 13.5
+
+
+[11:46:34] MCP REQUEST
+Server: academic_planner
+Tool: update_task_status
+
+Arguments:
+{
+    "task_id": "e126e4f9-8a12-4109-9f82-33fb4801086d",
+    "status": "en_progreso"
+}
+
+
+[11:46:34] MCP RESPONSE
+Server: academic_planner
+Tool: update_task_status
+Status: success
+
+Result:
+Tarea 'Tarea de Compiladores' actualizada a estado: en_progreso
+
