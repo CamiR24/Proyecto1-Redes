@@ -2,7 +2,7 @@ from contextlib import AsyncExitStack
 from mcp import ClientSession, StdioServerParameters
 from mcp.client.stdio import stdio_client
 from chatbot.logger import McpLogger
-
+from mcp.client.streamable_http import streamablehttp_client
 
 class McpClientManager:
     """Maneja las conexiones a uno o más servidores MCP y expone sus tools."""
@@ -52,6 +52,27 @@ class McpClientManager:
         except Exception as e:
             self.logger.log_response(server_name, tool_name, "error", str(e))
             raise
+
+    async def connect_to_remote_server(self, name: str, url: str):
+        """Connects to a remote MCP server over Streamable HTTP."""
+        read, write, _ = await self._exit_stack.enter_async_context(
+            streamablehttp_client(url)
+        )
+        session = await self._exit_stack.enter_async_context(
+            ClientSession(read, write)
+        )
+        await session.initialize()
+        self.sessions[name] = session
+
+        response = await session.list_tools()
+        for tool in response.tools:
+            self.tool_to_server[tool.name] = name
+            schema = getattr(tool, "input_schema", None) or getattr(tool, "inputSchema", None)
+            self.available_tools.append({
+                "name": tool.name,
+                "description": tool.description,
+                "input_schema": schema,
+            })
 
     async def close(self):
         await self._exit_stack.aclose()

@@ -58,6 +58,10 @@ async def main():
         args=["-m", "src.server"],
         cwd="/Users/Camila/Desktop/CAMILA UNIVERSIDAD/8SEMESTRE/Redes/academic-planner-mcp",
     )
+    await mcp_manager.connect_to_remote_server(
+        name="remote_study_tips",
+        url="https://academic-remote-mcp-842046673187.us-central1.run.app/mcp",
+    )
     print(f"\n[MCP] Tools disponibles: {[t['name'] for t in mcp_manager.available_tools]}")
 
     conversation_history = []

@@ -795,3 +795,20 @@ Status: success
 Result:
 - Examen de Redes (CC3067) | deadline=2026-09-10 | priority=14.0
 
+
+[13:42:55] MCP REQUEST
+Server: remote_study_tips
+Tool: get_random_study_tip
+
+Arguments:
+{}
+
+
+[13:42:55] MCP RESPONSE
+Server: remote_study_tips
+Tool: get_random_study_tip
+Status: success
+
+Result:
+Prioriza entender antes de memorizar: lo que comprendes se te olvida menos.
+
