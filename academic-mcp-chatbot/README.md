@@ -46,6 +46,9 @@ backed by a persistent SQLite database.
 - **Network analysis**: Wireshark capture of the TLS-encrypted traffic
   between the chatbot and the remote MCP server, decrypted using TLS key
   logging, identifying synchronization, request, and response messages.
+- **Portable configuration**: all server paths and the remote URL are
+  configured through environment variables — no machine-specific paths are
+  hardcoded in the source code.
 
 ## Architecture
 
@@ -100,6 +103,11 @@ Filesystem MCP    Git MCP    Academic Planner   HR (classmate)   Hotel (classmat
 - An Anthropic API key (with available credits)
 - Node.js (required by the official Filesystem MCP server, run via `npx`)
 - Internet connection (for the remote MCP server and the Anthropic API)
+- The `academic-planner-mcp` repository cloned locally, with its own
+  virtual environment set up (see that repo's README)
+- (Optional, for the full demo) The classmates' MCP server repositories
+  (`mcp-server-rrhh-construccion` and `hotel-mcp-server`) cloned locally,
+  each with its own virtual environment set up per their READMEs
 
 ## Installation
 
@@ -115,14 +123,33 @@ pip install -r requirements.txt
 
 ## Environment Variables
 
-Copy `.env.example` to `.env` and fill in your Anthropic API key:
+Copy `.env.example` to `.env` and fill in the values for your machine:
 
 ```
 ANTHROPIC_API_KEY=your_api_key_here
+
+# Absolute path to a sandbox directory the Filesystem MCP server may read/write
+MCP_SANDBOX_PATH=/absolute/path/to/a/sandbox/directory
+
+# Absolute path to your local clone of academic-planner-mcp
+ACADEMIC_PLANNER_PATH=/absolute/path/to/academic-planner-mcp
+
+# Absolute path to your local clone of the classmate HR server
+HR_SERVER_PATH=/absolute/path/to/mcp-server-rrhh-construccion
+
+# Absolute path to your local clone of the classmate hotel server
+HOTEL_SERVER_PATH=/absolute/path/to/hotel-mcp-server
+
+# URL of the deployed remote MCP server
+REMOTE_MCP_URL=https://your-remote-server-url/mcp
 ```
 
-Get a key at [console.anthropic.com](https://console.anthropic.com) →
-API Keys → Create Key.
+Get an Anthropic API key at [console.anthropic.com](https://console.anthropic.com)
+→ API Keys → Create Key.
+
+No paths are hardcoded in the source code — the chatbot reads all of the
+above from `.env` at startup and fails with a clear error message if any
+required variable is missing.
 
 ## Usage
 
@@ -140,9 +167,10 @@ on its own when to call one of the available MCP tools. Type `exit`,
 
 ### Filesystem
 
-Official Anthropic MCP server, launched via `npx`, restricted to a sandbox
-directory. Provides file operations: read, write, create directories, list
-directory contents, move files, search files, etc.
+Official Anthropic MCP server, launched via `npx`, restricted to the
+sandbox directory set in `MCP_SANDBOX_PATH`. Provides file operations:
+read, write, create directories, list directory contents, move files,
+search files, etc.
 
 ### Git
 
@@ -155,7 +183,7 @@ setup step, after which the chatbot fully coordinates staging and commits.
 ### Academic Planner (own server, public repo)
 
 Custom MCP server built for this project. Repository:
-`https://github.com/CamiR24/academic-planner-mcp.git`.
+[`academic-planner-mcp`](https://github.com/CamiR24/academic-planner-mcp)
 
 8 tools, backed by a SQLite database (`academic.db`):
 
@@ -185,7 +213,7 @@ that repository's own README.
 
 ### Student Server 1 — HR Management (classmate)
 
-Repository: `https://github.com/NESHGP04/mcp-server-rrhh-construccion`
+Repository: [`mcp-server-rrhh-construccion`](https://github.com/NESHGP04/mcp-server-rrhh-construccion)
 
 HR tools for a fictional construction company: employee lookup, vacation
 balances (with multi-year carry-over), overtime pay calculation (with
@@ -193,7 +221,7 @@ shift-type multipliers), payroll summaries, and employment history.
 
 ### Student Server 2 — Hotel Operations (classmate)
 
-Repository: `https://github.com/JosFer720/hotel-mcp-server`
+Repository: [`hotel-mcp-server`](https://github.com/JosFer720/hotel-mcp-server)
 
 Hotel front-desk tools: room availability, reservation lookup, daily
 summaries, room assignment (with cleaning-window validation), overbooking
@@ -210,13 +238,13 @@ Cloud Run instances). Exposes one tool:
 |---|---|
 | `get_random_study_tip` | Returns a random study tip |
 
-Repository: `https://github.com/CamiR24/academic-remote-mcp.git`
-Deployed URL: `https://academic-remote-mcp-842046673187.us-central1.run.app/mcp`
+Repository: [`academic-remote-mcp`](https://github.com/CamiR24/academic-remote-mcp)
 
 ## Running the Project
 
 1. Activate the virtual environment: `source venv/bin/activate`
-2. Make sure `.env` contains a valid `ANTHROPIC_API_KEY`
+2. Make sure `.env` contains a valid `ANTHROPIC_API_KEY` and all the path
+   variables listed above
 3. Run: `python src/main.py`
 4. The chatbot connects to all configured MCP servers on startup and prints
    the list of available tools before accepting input.
@@ -288,17 +316,13 @@ academic-mcp-chatbot/
 │   ├── main.py
 │   ├── chatbot/
 │   │   ├── llm_client.py
-│   │   ├── conversation.py
 │   │   └── logger.py
 │   │
 │   └── mcp_local/
-│       ├── client_manager.py
-│       └── config.py
+│       └── client_manager.py
 │
 ├── logs/
 │   └── mcp.log
-│
-├── tests/
 │
 ├── .env.example
 ├── .gitignore
