@@ -18,14 +18,8 @@ class LLMClient:
         self.max_tokens = max_tokens
 
     def send_message(self, messages: list[dict], tools: list[dict] | None = None):
-        """Devuelve el objeto de respuesta completo (no solo texto), necesitamos inspeccionar tool_use blocks."""
-        kwargs = dict(model=self.model, max_tokens=self.max_tokens, messages=messages)
-        if tools:
-            kwargs["tools"] = tools
-
-        return self.client.messages.create(**kwargs)
-
-    def send_message(self, messages: list[dict], tools: list[dict] | None = None):
+        """Devuelve el objeto de respuesta completo (no solo texto), ya que
+        necesitamos inspeccionar tool_use blocks."""
         kwargs = dict(
             model=self.model,
             max_tokens=self.max_tokens,
