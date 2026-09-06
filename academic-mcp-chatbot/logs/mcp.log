@@ -753,3 +753,45 @@ Proyecto: Proyecto de Compiladores (deadline final: 2026-09-30)
   - Pruebas y revisión: Proyecto de Compiladores: 4.0h, sugerido antes de 2026-09-28
   - Entrega final y documentación: Proyecto de Compiladores: 2.0h, sugerido antes de 2026-09-30
 
+
+[12:09:16] MCP REQUEST
+Server: academic_planner
+Tool: add_academic_task
+
+Arguments:
+{
+    "name": "Examen de Redes",
+    "course": "CC3067",
+    "type": "examen",
+    "deadline": "2026-09-10",
+    "estimated_hours": 4,
+    "difficulty": "alta",
+    "importance": "alta"
+}
+
+
+[12:09:16] MCP RESPONSE
+Server: academic_planner
+Tool: add_academic_task
+Status: success
+
+Result:
+Tarea creada con id=b7429a10-2145-4515-bd6b-350433e95b04
+
+
+[12:10:08] MCP REQUEST
+Server: academic_planner
+Tool: get_upcoming_tasks
+
+Arguments:
+{}
+
+
+[12:10:08] MCP RESPONSE
+Server: academic_planner
+Tool: get_upcoming_tasks
+Status: success
+
+Result:
+- Examen de Redes (CC3067) | deadline=2026-09-10 | priority=14.0
+
