@@ -554,3 +554,154 @@ Status: success
 Result:
 Tarea 'Tarea de Compiladores' actualizada a estado: en_progreso
 
+
+[11:52:34] MCP REQUEST
+Server: academic_planner
+Tool: add_academic_task
+
+Arguments:
+{
+    "name": "Examen de Redes",
+    "course": "CC3067",
+    "type": "examen",
+    "deadline": "2026-09-10",
+    "estimated_hours": 4,
+    "difficulty": "alta",
+    "importance": "alta"
+}
+
+
+[11:52:34] MCP RESPONSE
+Server: academic_planner
+Tool: add_academic_task
+Status: success
+
+Result:
+Tarea creada con id=ff8de3f8-f36b-44e5-94c5-e600cdcf31c6
+
+
+[11:52:43] MCP REQUEST
+Server: academic_planner
+Tool: add_academic_task
+
+Arguments:
+{
+    "name": "Tarea de Compiladores",
+    "course": "CC3032",
+    "type": "tarea",
+    "deadline": "2026-09-08",
+    "estimated_hours": 3,
+    "difficulty": "media",
+    "importance": "media"
+}
+
+
+[11:52:43] MCP RESPONSE
+Server: academic_planner
+Tool: add_academic_task
+Status: success
+
+Result:
+Tarea creada con id=56dda0cf-d1ad-42f2-8580-a550edfced13
+
+
+[11:52:57] MCP REQUEST
+Server: academic_planner
+Tool: generate_study_schedule
+
+Arguments:
+{
+    "available_hours_per_day": 2,
+    "days_ahead": 5
+}
+
+
+[11:52:57] MCP RESPONSE
+Server: academic_planner
+Tool: generate_study_schedule
+Status: success
+
+Result:
+2026-09-06: Examen de Redes (2h) [total 2h]
+2026-09-07: Examen de Redes (2h) [total 2h]
+2026-09-08: Tarea de Compiladores (2h) [total 2h]
+2026-09-09: sin tareas asignadas
+2026-09-10: sin tareas asignadas
+
+⚠️ Advertencias:
+No se alcanza a completar 'Tarea de Compiladores' antes de su fecha límite (2026-09-08); quedan 1h sin asignar.
+
+
+[11:56:09] MCP REQUEST
+Server: academic_planner
+Tool: add_academic_task
+
+Arguments:
+{
+    "name": "Examen de Redes",
+    "course": "CC3067",
+    "type": "examen",
+    "deadline": "2026-09-10",
+    "estimated_hours": 4,
+    "difficulty": "alta",
+    "importance": "alta"
+}
+
+
+[11:56:09] MCP RESPONSE
+Server: academic_planner
+Tool: add_academic_task
+Status: success
+
+Result:
+Tarea creada con id=efec98b5-d74f-4a4a-a82b-a75ec0d2ab35
+
+
+[11:56:17] MCP REQUEST
+Server: academic_planner
+Tool: add_academic_task
+
+Arguments:
+{
+    "name": "Tarea de Compiladores",
+    "course": "CC3032",
+    "type": "tarea",
+    "deadline": "2026-09-08",
+    "estimated_hours": 3,
+    "difficulty": "media",
+    "importance": "media"
+}
+
+
+[11:56:17] MCP RESPONSE
+Server: academic_planner
+Tool: add_academic_task
+Status: success
+
+Result:
+Tarea creada con id=56cdd2a1-f1d7-4831-862c-049ff4d80df6
+
+
+[11:56:27] MCP REQUEST
+Server: academic_planner
+Tool: generate_study_schedule
+
+Arguments:
+{
+    "available_hours_per_day": 2,
+    "days_ahead": 5
+}
+
+
+[11:56:27] MCP RESPONSE
+Server: academic_planner
+Tool: generate_study_schedule
+Status: success
+
+Result:
+2026-09-06: Tarea de Compiladores (2h) [total 2h]
+2026-09-07: Tarea de Compiladores (1h), Examen de Redes (1h) [total 2h]
+2026-09-08: Examen de Redes (2h) [total 2h]
+2026-09-09: Examen de Redes (1h) [total 1h]
+2026-09-10: sin tareas asignadas
+
