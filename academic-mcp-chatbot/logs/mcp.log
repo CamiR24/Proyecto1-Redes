@@ -1055,3 +1055,118 @@ Result:
 - Parcial de Redes (CC3067) | deadline=2026-09-10 | priority=14.0
 - Proyecto de Bases de Datos (CC3086) | deadline=2026-09-12 | priority=12.0
 
+
+[17:28:26] MCP REQUEST
+Server: hr_construccion
+Tool: search_employees
+
+Arguments:
+{
+    "status": "active"
+}
+
+
+[17:28:26] MCP RESPONSE
+Server: hr_construccion
+Tool: search_employees
+Status: success
+
+Result:
+{
+  "id": 5,
+  "name": "Pedro García",
+  "role": "Ingeniero residente",
+  "hourly_rate": 118.2,
+  "hire_date": "2021-10-25",
+  "termination_date": null,
+  "status": "active"
+}{
+  "id": 6,
+  "name": "Pedro López",
+  "role": "Electricista",
+  "hourly_rate": 62.66,
+  "hire_date": "2021-10-10",
+  "termination_date": null,
+  "status": "active"
+}{
+  "id": 7,
+  "name": "Ana Morales",
+  "role": "Supervisor de seguridad",
+  "hourly_rate": 53.6,
+  "hire_date": "2021-11-09",
+  "termination_date": null,
+  "status": "active"
+}{
+  "id": 8,
+  "name": "Andrés Rodríguez",
+  "role": "Maestro de obra",
+  "hourly_rate": 74.31,
+  "hire_date": "2022-03-31",
+  "termination_date": null,
+  "status": "active"
+}{
+  "id": 9,
+  "name": "José Rodríguez",
+  "role": "Plomero",
+  "hourly_rate": 57.58,
+  "hire_date": "2024-12-08",
+  "termination_date": null,
+  "status": "active"
+}{
+  "id": 10,
+  "name": "Valeria Vásquez",
+  "role": "Electricista",
+  "hourly_rate": 59.19,
+  "hire_date": "2018-07-07",
+  "termination_date": null,
+  "status": "active"
+}{
+  "id": 11,
+  "name": "Gabriela Ramírez",
+  "role": "Maestro de obra",
+  "hourly_rate": 72.4,
+  "hire_date": "2019-02-18",
+  "termination_date": null,
+  "status": "active"
+}{
+  "id": 12,
+  "name": "Jorge Ramírez",
+  "role": "Administrativo de RRHH",
+  "hourly_rate": 50.83,
+  "hire_date": "2022-02-03",
+  "termination_date": null,
+  "status": "active"
+}{
+  "id": 13,
+  "name": "Sofía Pérez",
+  "role": "Operador de maquinaria",
+  "hourly_rate": 57.14,
+  "hire_date": "2020-12-29",
+  "termination_date": null,
+  "status": "active"
+}{
+  "id": 14,
+  "name": "José Vásquez",
+  "role": "Ingeniero residente",
+  "hourly_rate": 113.69,
+  "hire_date": "2020-09-29",
+  "termination_date": null,
+  "status": "active"
+}{
+  "id": 15,
+  "name": "Sofía Castillo",
+  "role": "Supervisor de seguridad",
+  "hourly_rate": 56.11,
+  "hire_date": "2025-03-06",
+  "termination_date": null,
+  "status": "active"
+}{
+  "id": 16,
+  "name": "Gabriela Girón",
+  "role": "Operador de maquinaria",
+  "hourly_rate": 66.64,
+  "hire_date": "2018-08-18",
+  "termination_date": null,
+  "status": "active"
+}
+

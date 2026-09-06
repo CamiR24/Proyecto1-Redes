@@ -1,10 +1,24 @@
 import asyncio
+import os
+from dotenv import load_dotenv
 from chatbot.llm_client import LLMClient
 from mcp_local.client_manager import McpClientManager
-import os
+
+load_dotenv()
+
+
+def get_required_env(name: str) -> str:
+    value = os.environ.get(name)
+    if not value:
+        raise ValueError(
+            f"La variable de entorno {name} no está definida. Revisa tu archivo .env."
+        )
+    return value
+
 
 async def run_conversation_turn(llm, mcp_manager, conversation_history):
-    """Envía el historial al LLM y resuelve cualquier tool_use, hasta obtener una respuesta final de texto."""
+    """Envía el historial al LLM y resuelve cualquier tool_use, hasta
+    obtener una respuesta final de texto."""
     while True:
         response = llm.send_message(conversation_history, tools=mcp_manager.available_tools)
 
@@ -15,7 +29,7 @@ async def run_conversation_turn(llm, mcp_manager, conversation_history):
         conversation_history.append({"role": "assistant", "content": response.content})
 
         if response.stop_reason != "tool_use":
-            break  #respuesta final
+            break
 
         tool_results = []
         for block in response.content:
@@ -41,39 +55,52 @@ async def main():
     llm = LLMClient()
     mcp_manager = McpClientManager()
 
-    # IMPORTANTE: reemplaza esta ruta por la carpeta sandbox real en tu máquina
+    # Filesystem MCP (official)
+    sandbox_path = get_required_env("MCP_SANDBOX_PATH")
     await mcp_manager.connect_to_server(
         name="filesystem",
         command="npx",
-        args=["-y", "@modelcontextprotocol/server-filesystem", "/Users/Camila/mcp-sandbox"],
+        args=["-y", "@modelcontextprotocol/server-filesystem", sandbox_path],
     )
+
+    # Git MCP (official)
     await mcp_manager.connect_to_server(
         name="git",
         command="python",
         args=["-m", "mcp_server_git"],
     )
+
+    # Academic Planner MCP (own server)
+    academic_planner_path = get_required_env("ACADEMIC_PLANNER_PATH")
     await mcp_manager.connect_to_server(
         name="academic_planner",
         command="python",
         args=["-m", "src.server"],
-        cwd="/Users/Camila/Desktop/CAMILA UNIVERSIDAD/8SEMESTRE/Redes/academic-planner-mcp",
+        cwd=academic_planner_path,
     )
+
+    # Remote MCP (Cloud Run)
+    remote_url = get_required_env("REMOTE_MCP_URL")
     await mcp_manager.connect_to_remote_server(
         name="remote_study_tips",
-        url="https://academic-remote-mcp-842046673187.us-central1.run.app/mcp",
+        url=remote_url,
     )
 
+    # HR Management MCP (classmate: NESHGP04)
+    hr_path = get_required_env("HR_SERVER_PATH")
     await mcp_manager.connect_to_server(
         name="hr_construccion",
-        command="/Users/Camila/Desktop/CAMILA UNIVERSIDAD/8SEMESTRE/Redes/mcp-server-rrhh-construccion/.venv/bin/python",
-        args=["/Users/Camila/Desktop/CAMILA UNIVERSIDAD/8SEMESTRE/Redes/mcp-server-rrhh-construccion/server.py"],
+        command=f"{hr_path}/.venv/bin/python",
+        args=[f"{hr_path}/server.py"],
     )
 
+    # Hotel Operations MCP (classmate: JosFer720)
+    hotel_path = get_required_env("HOTEL_SERVER_PATH")
     await mcp_manager.connect_to_server(
         name="hotel",
-        command="/Users/Camila/Desktop/CAMILA UNIVERSIDAD/8SEMESTRE/Redes/hotel-mcp-server/.venv/bin/python",
+        command=f"{hotel_path}/.venv/bin/python",
         args=["-m", "hotel_mcp"],
-        cwd="/Users/Camila/Desktop/CAMILA UNIVERSIDAD/8SEMESTRE/Redes/hotel-mcp-server",
+        cwd=hotel_path,
         env={**os.environ, "PYTHONPATH": "src"},
     )
 
