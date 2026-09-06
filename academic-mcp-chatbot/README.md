@@ -105,7 +105,7 @@ Filesystem MCP    Git MCP    Academic Planner   HR (classmate)   Hotel (classmat
 
 ```bash
 git clone https://github.com/CamiR24/Proyecto1-Redes.git
-cd academic-mcp-chatbot
+cd Proyecto1-Redes/academic-mcp-chatbot
 
 python3 -m venv venv
 source venv/bin/activate      # on Windows: venv\Scripts\activate

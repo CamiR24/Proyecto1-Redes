@@ -1036,3 +1036,22 @@ Result:
   "status": "active"
 }
 
+
+[17:26:05] MCP REQUEST
+Server: academic_planner
+Tool: get_upcoming_tasks
+
+Arguments:
+{}
+
+
+[17:26:05] MCP RESPONSE
+Server: academic_planner
+Tool: get_upcoming_tasks
+Status: success
+
+Result:
+- Examen de Redes (CC3067) | deadline=2026-09-10 | priority=14.0
+- Parcial de Redes (CC3067) | deadline=2026-09-10 | priority=14.0
+- Proyecto de Bases de Datos (CC3086) | deadline=2026-09-12 | priority=12.0
+
