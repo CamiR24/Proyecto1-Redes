@@ -812,3 +812,227 @@ Status: success
 Result:
 Prioriza entender antes de memorizar: lo que comprendes se te olvida menos.
 
+
+[16:54:55] MCP REQUEST
+Server: hotel
+Tool: consultar_disponibilidad
+
+Arguments:
+{
+    "fecha": "2026-09-10"
+}
+
+
+[16:54:55] MCP RESPONSE
+Server: hotel
+Tool: consultar_disponibilidad
+Status: success
+
+Result:
+{
+  "desde": "2026-09-10",
+  "hasta": "2026-09-10",
+  "filtros": {
+    "tipo": null,
+    "vista": null
+  },
+  "noches": [
+    {
+      "fecha": "2026-09-10",
+      "habitaciones_totales": 60,
+      "ocupadas": 53,
+      "libres": 7,
+      "ocupacion_pct": 88.3,
+      "llegadas_sin_habitacion_asignada": 1,
+      "libres_por_tipo": {
+        "doble": 4,
+        "individual": 2,
+        "suite": 1
+      },
+      "libres_por_vista": {
+        "interior": 2,
+        "jardin": 4,
+        "mar": 1
+      },
+      "habitaciones_libres": [
+        {
+          "numero": "101",
+          "tipo": "individual",
+          "capacidad": 1,
+          "vista": "interior",
+          "accesible": true,
+          "tarifa_base": 85.0
+        },
+        {
+          "numero": "103",
+          "tipo": "doble",
+          "capacidad": 2,
+          "vista": "jardin",
+          "accesible": false,
+          "tarifa_base": 130.0
+        },
+        {
+          "numero": "104",
+          "tipo": "doble",
+          "capacidad": 2,
+          "vista": "jardin",
+          "accesible": false,
+          "tarifa_base": 130.0
+        },
+        {
+          "numero": "201",
+          "tipo": "individual",
+          "capacidad": 1,
+          "vista": "interior",
+          "accesible": true,
+          "tarifa_base": 87.55
+        },
+        {
+          "numero": "203",
+          "tipo": "doble",
+          "capacidad": 2,
+          "vista": "jardin",
+          "accesible": false,
+          "tarifa_base": 133.9
+        },
+        {
+          "numero": "404",
+          "tipo": "doble",
+          "capacidad": 2,
+          "vista": "jardin",
+          "accesible": false,
+          "tarifa_base": 141.7
+        },
+        {
+          "numero": "512",
+          "tipo": "suite",
+          "capacidad": 4,
+          "vista": "mar",
+          "accesible": false,
+          "tarifa_base": 392.0
+        }
+      ]
+    }
+  ],
+  "resumen": {
+    "habitaciones_consideradas": 60,
+    "minimo_libres_en_el_rango": 7,
+    "noches_consultadas": 1
+  }
+}
+
+
+[16:55:39] MCP REQUEST
+Server: hr_construccion
+Tool: search_employees
+
+Arguments:
+{
+    "status": "active"
+}
+
+
+[16:55:39] MCP RESPONSE
+Server: hr_construccion
+Tool: search_employees
+Status: success
+
+Result:
+{
+  "id": 5,
+  "name": "Pedro García",
+  "role": "Ingeniero residente",
+  "hourly_rate": 118.2,
+  "hire_date": "2021-10-25",
+  "termination_date": null,
+  "status": "active"
+}{
+  "id": 6,
+  "name": "Pedro López",
+  "role": "Electricista",
+  "hourly_rate": 62.66,
+  "hire_date": "2021-10-10",
+  "termination_date": null,
+  "status": "active"
+}{
+  "id": 7,
+  "name": "Ana Morales",
+  "role": "Supervisor de seguridad",
+  "hourly_rate": 53.6,
+  "hire_date": "2021-11-09",
+  "termination_date": null,
+  "status": "active"
+}{
+  "id": 8,
+  "name": "Andrés Rodríguez",
+  "role": "Maestro de obra",
+  "hourly_rate": 74.31,
+  "hire_date": "2022-03-31",
+  "termination_date": null,
+  "status": "active"
+}{
+  "id": 9,
+  "name": "José Rodríguez",
+  "role": "Plomero",
+  "hourly_rate": 57.58,
+  "hire_date": "2024-12-08",
+  "termination_date": null,
+  "status": "active"
+}{
+  "id": 10,
+  "name": "Valeria Vásquez",
+  "role": "Electricista",
+  "hourly_rate": 59.19,
+  "hire_date": "2018-07-07",
+  "termination_date": null,
+  "status": "active"
+}{
+  "id": 11,
+  "name": "Gabriela Ramírez",
+  "role": "Maestro de obra",
+  "hourly_rate": 72.4,
+  "hire_date": "2019-02-18",
+  "termination_date": null,
+  "status": "active"
+}{
+  "id": 12,
+  "name": "Jorge Ramírez",
+  "role": "Administrativo de RRHH",
+  "hourly_rate": 50.83,
+  "hire_date": "2022-02-03",
+  "termination_date": null,
+  "status": "active"
+}{
+  "id": 13,
+  "name": "Sofía Pérez",
+  "role": "Operador de maquinaria",
+  "hourly_rate": 57.14,
+  "hire_date": "2020-12-29",
+  "termination_date": null,
+  "status": "active"
+}{
+  "id": 14,
+  "name": "José Vásquez",
+  "role": "Ingeniero residente",
+  "hourly_rate": 113.69,
+  "hire_date": "2020-09-29",
+  "termination_date": null,
+  "status": "active"
+}{
+  "id": 15,
+  "name": "Sofía Castillo",
+  "role": "Supervisor de seguridad",
+  "hourly_rate": 56.11,
+  "hire_date": "2025-03-06",
+  "termination_date": null,
+  "status": "active"
+}{
+  "id": 16,
+  "name": "Gabriela Girón",
+  "role": "Operador de maquinaria",
+  "hourly_rate": 66.64,
+  "hire_date": "2018-08-18",
+  "termination_date": null,
+  "status": "active"
+}
+
