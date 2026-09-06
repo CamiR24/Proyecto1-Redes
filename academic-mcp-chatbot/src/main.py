@@ -1,7 +1,7 @@
 import asyncio
 from chatbot.llm_client import LLMClient
 from mcp_local.client_manager import McpClientManager
-
+import os
 
 async def run_conversation_turn(llm, mcp_manager, conversation_history):
     """Envía el historial al LLM y resuelve cualquier tool_use, hasta obtener una respuesta final de texto."""
@@ -62,6 +62,21 @@ async def main():
         name="remote_study_tips",
         url="https://academic-remote-mcp-842046673187.us-central1.run.app/mcp",
     )
+
+    await mcp_manager.connect_to_server(
+        name="hr_construccion",
+        command="/Users/Camila/Desktop/CAMILA UNIVERSIDAD/8SEMESTRE/Redes/mcp-server-rrhh-construccion/.venv/bin/python",
+        args=["/Users/Camila/Desktop/CAMILA UNIVERSIDAD/8SEMESTRE/Redes/mcp-server-rrhh-construccion/server.py"],
+    )
+
+    await mcp_manager.connect_to_server(
+        name="hotel",
+        command="/Users/Camila/Desktop/CAMILA UNIVERSIDAD/8SEMESTRE/Redes/hotel-mcp-server/.venv/bin/python",
+        args=["-m", "hotel_mcp"],
+        cwd="/Users/Camila/Desktop/CAMILA UNIVERSIDAD/8SEMESTRE/Redes/hotel-mcp-server",
+        env={**os.environ, "PYTHONPATH": "src"},
+    )
+
     print(f"\n[MCP] Tools disponibles: {[t['name'] for t in mcp_manager.available_tools]}")
 
     conversation_history = []
