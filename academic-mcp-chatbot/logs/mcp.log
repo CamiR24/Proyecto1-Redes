@@ -1170,3 +1170,156 @@ Result:
   "status": "active"
 }
 
+
+[12:59:15] MCP REQUEST
+Server: hr_construccion
+Tool: search_employees
+
+Arguments:
+{
+    "status": "inactive"
+}
+
+
+[12:59:15] MCP RESPONSE
+Server: hr_construccion
+Tool: search_employees
+Status: success
+
+Result:
+{
+  "id": 1,
+  "name": "Ana García",
+  "role": "Plomero",
+  "hourly_rate": 49.98,
+  "hire_date": "2019-07-26",
+  "termination_date": "2026-06-13",
+  "status": "inactive"
+}{
+  "id": 2,
+  "name": "Ana Girón",
+  "role": "Contador",
+  "hourly_rate": 64.52,
+  "hire_date": "2022-09-25",
+  "termination_date": "2025-06-17",
+  "status": "inactive"
+}{
+  "id": 3,
+  "name": "Carlos Morales",
+  "role": "Electricista",
+  "hourly_rate": 52.7,
+  "hire_date": "2024-10-01",
+  "termination_date": "2025-06-14",
+  "status": "inactive"
+}{
+  "id": 4,
+  "name": "Miguel Alvarado",
+  "role": "Contador",
+  "hourly_rate": 70.34,
+  "hire_date": "2023-01-14",
+  "termination_date": "2026-03-29",
+  "status": "inactive"
+}
+
+
+[13:50:37] MCP REQUEST
+Server: academic_planner
+Tool: get_upcoming_tasks
+
+Arguments:
+{}
+
+
+[13:50:37] MCP RESPONSE
+Server: academic_planner
+Tool: get_upcoming_tasks
+Status: success
+
+Result:
+- Examen de Redes (CC3067) | deadline=2026-09-10 | priority=15.0
+- Parcial de Redes (CC3067) | deadline=2026-09-10 | priority=15.0
+- Proyecto de Bases de Datos (CC3086) | deadline=2026-09-12 | priority=13.0
+
+
+[13:50:57] MCP REQUEST
+Server: academic_planner
+Tool: generate_study_schedule
+
+Arguments:
+{
+    "available_hours_per_day": 4,
+    "days_ahead": 7
+}
+
+
+[13:50:57] MCP RESPONSE
+Server: academic_planner
+Tool: generate_study_schedule
+Status: success
+
+Result:
+2026-09-07: Examen de Redes (4.0h) [total 4.0h]
+2026-09-08: Parcial de Redes (4.0h) [total 4.0h]
+2026-09-09: Proyecto de Bases de Datos (4h) [total 4h]
+2026-09-10: Proyecto de Bases de Datos (2.0h) [total 2.0h]
+2026-09-11: sin tareas asignadas
+2026-09-12: sin tareas asignadas
+2026-09-13: sin tareas asignadas
+
+
+[13:50:57] MCP REQUEST
+Server: academic_planner
+Tool: analyze_workload
+
+Arguments:
+{
+    "available_hours_per_day": 4,
+    "days_ahead": 7
+}
+
+
+[13:50:57] MCP RESPONSE
+Server: academic_planner
+Tool: analyze_workload
+Status: success
+
+Result:
+Tareas en los próximos 7 días: 3
+Horas estimadas necesarias: 14.0
+Horas disponibles en el período: 28
+Estado: Carga manejable
+
+
+[14:00:42] MCP REQUEST
+Server: remote_study_tips
+Tool: get_random_study_tip
+
+Arguments:
+{}
+
+
+[14:00:43] MCP RESPONSE
+Server: remote_study_tips
+Tool: get_random_study_tip
+Status: success
+
+Result:
+Hidrátate y toma pausas activas; el cerebro rinde peor con fatiga acumulada.
+
+
+[18:26:49] MCP REQUEST
+Server: remote_study_tips
+Tool: get_random_study_tip
+
+Arguments:
+{}
+
+
+[18:26:49] MCP RESPONSE
+Server: remote_study_tips
+Tool: get_random_study_tip
+Status: success
+
+Result:
+Evita el multitasking mientras estudias: cambiar de tarea reduce la retención.
+
